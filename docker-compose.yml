@@ -46,7 +46,7 @@ services:
       - frontend
 
   db:
-    image: mysql:5.7
+    image: percona
     restart: always
     environment:
       MYSQL_DATABASE: site_vitrine
