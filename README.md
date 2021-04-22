@@ -46,7 +46,7 @@ docker-compose up -d
 | Name      | Service         | Image                       | Descrption                   |
 | -         | -               | -                           | -                            |
 | nginx     | Serveur HTTP    | nginx                       | Contacte PHP FPM par fastcgi |
-| wordpress | PHP FPM | wordpress:php7.4-fpm-alpine | Coeur de docker              |
+| wordpress | PHP FPM         | wordpress:php7.4-fpm-alpine | Wordpress                    |
 | db        | Base de données | percona                     | Fork de mysql                |
 
 <br>
