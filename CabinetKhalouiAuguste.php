@@ -24,7 +24,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-Copyright 2005-2015 Ludwig SILVAIN
+Copyright 2021 Ludwig SILVAIN
 */
 
 class Cabinet_Khaloui_Auguste
@@ -41,25 +41,25 @@ class Cabinet_Khaloui_Auguste
     /* Login */
     add_filter('login_errors', [$this, "password_error"]);
 
-     /* Version Wordpress */
+    /* Version Wordpress */
     add_filter('the_generator', [$this, 'remove_wp_version_rss']);
 
-    /* Masquer les pages des autheurs */
+    /* Author's page */
     add_action('template_redirect', [$this, 'hide_author_page']);
   }
 
   /* Reset Password */
-  function disable_reset_password() : bool
+  function disable_reset_password(): bool
   {
     return false;
   }
 
-  function remove_reset_password_text($text) : string
+  function remove_reset_password_text($text): string
   {
     return str_replace(array('Lost your password?', 'Lost your password'), '', trim($text, '?'));
   }
 
-  function redirect_from_reset_password() : void
+  function redirect_from_reset_password(): void
   {
     if (isset($_GET['action'])) {
       if (in_array($_GET['action'], array('lostpassword', 'retrievepassword'))) {
@@ -70,19 +70,19 @@ class Cabinet_Khaloui_Auguste
   }
 
   /* Login */
-  function password_error($a) : string
+  function password_error($a): string
   {
     return 'The username or password is incorrect. Please consult your system administrator.';
   }
 
   /* Version Wordpress */
-  function remove_wp_version_rss() : string
+  function remove_wp_version_rss(): string
   {
     return '';
   }
 
-  /* Masquer les pages des autheurs */
-  function hide_author_page() : void
+  /* Author's page */
+  function hide_author_page(): void
   {
     if (is_author()) {
       wp_redirect(get_option('home'), 301);

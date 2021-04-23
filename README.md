@@ -6,16 +6,12 @@
 docker run -it --rm --name my-apache-app -v D:\Ludwig\Dev\silvain.eu\NaseraWodpress:/data httpd:2.4 htpasswd /data/nginx/.htpasswd <nom d'utilisateur>
 ```
 
-## Fichier `wp-includes/functions.php`
+## Plugins : CabinetKhalouiAuguste
 
-```php
-function remove_wp_version_rss() {
- return'';
- }
-
-add_filter('the_generator','remove_wp_version_rss');
-add_filter('login_errors',create_function('$a', "return null;"));
-```
+- Suppression de la réinitialisation du mot de passe
+- Suppression du message d'erreur lors du login
+- Suppression de la version de wordress
+- Suppression de la page des auteurs
 
 ## Autorisations
 
