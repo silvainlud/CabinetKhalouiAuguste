@@ -52,7 +52,7 @@ class Cabinet_Khaloui_Auguste
     remove_action('wp_head', 'rsd_link');
 
     /* WP JSON */
-    remove_action('rest_api_init', 'create_initial_rest_routes', 99);
+    add_action('rest_api_init', [$this, 'throw_404'], 0);
 
     /* Disable Sitemaps Users et serveur*/
     add_filter('wp_sitemaps_add_provider', 'remove_author_from_sitemap', 10, 2);
@@ -110,6 +110,16 @@ class Cabinet_Khaloui_Auguste
       return false;
     }
     return $provider;
+  }
+
+  public function throw_404()
+  {
+    global $wp_query;
+    $wp_query->set_404();
+    status_header(404);
+    nocache_headers();
+    require get_404_template();
+    exit;
   }
 }
 
