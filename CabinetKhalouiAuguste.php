@@ -46,6 +46,19 @@ class Cabinet_Khaloui_Auguste
 
     /* Author's page */
     add_action('template_redirect', [$this, 'hide_author_page']);
+
+    /* XML RPC*/
+    add_filter('xmlrpc_enabled', '__return_false');
+    remove_action('wp_head', 'rsd_link');
+
+    /* WP JSON */
+    remove_action('rest_api_init', 'create_initial_rest_routes', 99);
+
+    /* Disable Sitemap */
+    add_filter('wp_sitemaps_enabled', '__return_false');
+    add_action( 'init', function() {
+      remove_action( 'init', 'wp_sitemaps_get_server' );
+    }, 5 );
   }
 
   /* Reset Password */
