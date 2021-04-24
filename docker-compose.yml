@@ -21,6 +21,7 @@ services:
       - ./nginx/.htpasswd:/etc/nginx/.htpasswd:ro
       - /etc/letsencrypt/archive/nasera.silvain.eu/:/certs:ro
 
+      - /var/www/letsencrypt:/var/www/letsencrypt:ro
       - ./data/wp/:/var/www/html:ro
       - ./CabinetKhalouiAuguste.php:/var/www/html/wp-content/plugins/CabinetKhalouiAuguste.php:ro
     depends_on:
