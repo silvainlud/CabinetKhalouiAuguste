@@ -54,11 +54,11 @@ class Cabinet_Khaloui_Auguste
     /* WP JSON */
     remove_action('rest_api_init', 'create_initial_rest_routes', 99);
 
-    /* Disable Sitemap */
-    add_filter('wp_sitemaps_enabled', '__return_false');
-    add_action( 'init', function() {
-      remove_action( 'init', 'wp_sitemaps_get_server' );
-    }, 5 );
+    /* Disable Sitemaps Users et serveur*/
+    add_filter('wp_sitemaps_add_provider', 'remove_author_from_sitemap', 10, 2);
+    add_action('init', function () {
+      remove_action('init', 'wp_sitemaps_get_server');
+    }, 5);
   }
 
   /* Reset Password */
@@ -101,6 +101,15 @@ class Cabinet_Khaloui_Auguste
       wp_redirect(get_option('home'), 301);
       exit;
     }
+  }
+
+  /* Sitemaps */
+  public function remove_author_from_sitemap($provider, $name)
+  {
+    if ('users' === $name) {
+      return false;
+    }
+    return $provider;
   }
 }
 
