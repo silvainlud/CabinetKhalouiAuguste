@@ -45,7 +45,6 @@ docker-compose up -d
 | wordpress | PHP FPM         | wordpress:php7.4-fpm-alpine | Wordpress                    |
 | db        | Base de données | percona                     | Fork de mysql                |
 
-<br>
 
 ### Réseau 
 
@@ -54,3 +53,10 @@ docker-compose up -d
 | NGINX     | :heavy_check_mark: |                    |
 | PHP       | :heavy_check_mark: | :heavy_check_mark: |
 | WORDPRESS |                    | :heavy_check_mark: |
+
+
+### Génération du certificat
+
+```bash
+docker run -it --rm --name certbot -v "/etc/letsencrypt:/etc/letsencrypt" -v "/var/lib/letsencrypt:/var/lib/letsencrypt" -v "/var/www/letsencrypt:/var/www/letsencrypt" certbot/certbot certonly --webroot -w /var/www/letsencrypt
+```
