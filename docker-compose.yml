@@ -34,9 +34,10 @@ services:
     restart: always
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: AdminDeLaBase
-      WORDPRESS_DB_PASSWORD: MotDePasseDeAdminDeLaBase
       WORDPRESS_DB_NAME: site_vitrine
+      WORDPRESS_DB_USER: wp_Cabinet_Khaloui_Auguste
+      WORDPRESS_DB_PASSWORD: "{UADf.0xF#XjbpTd4sdx2CiJp>v{7p7q&~T)@MLEgZmACG9"
+      WORDPRESS_TABLE_PREFIX: ""
       DISALLOW_FILE_EDIT: "true"
     volumes:
       - ./data/wp/:/var/www/html
@@ -53,8 +54,8 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: site_vitrine
-      MYSQL_USER: AdminDeLaBase
-      MYSQL_PASSWORD: MotDePasseDeAdminDeLaBase
+      MYSQL_USER: wp_Cabinet_Khaloui_Auguste
+      MYSQL_PASSWORD: "{UADf.0xF#XjbpTd4sdx2CiJp>v{7p7q&~T)@MLEgZmACG9"
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
       - db:/var/lib/mysql
