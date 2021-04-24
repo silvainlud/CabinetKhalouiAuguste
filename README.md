@@ -2,8 +2,14 @@
 
 ## Création du `.htpasswd`
 
+Dans le cas de la création
 ```
-docker run -it --rm --name my-apache-app -v D:\Ludwig\Dev\silvain.eu\NaseraWodpress:/data httpd:2.4 htpasswd /data/nginx/.htpasswd <nom d'utilisateur>
+docker run -it --rm --name my-apache-app -v "$PWD":/data httpd:2.4 htpasswd -c /data/nginx/.htpasswd <nom d'utilisateur>
+```
+
+Dans le cas de l'ajout d'un utilisateur
+```
+docker run -it --rm --name my-apache-app -v "$PWD":/data httpd:2.4 htpasswd /data/nginx/.htpasswd <nom d'utilisateur>
 ```
 
 ## Plugins : CabinetKhalouiAuguste
